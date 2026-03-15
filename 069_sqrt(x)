@@ -1,0 +1,9 @@
+int mySqrt(int x) {
+    // 从0开始，一个一个试
+    long long i = 0;
+    while(i * i <= x) {
+        i++;
+    }
+    // 当 i*i > x 时，i-1 就是答案
+    return i - 1;
+}
