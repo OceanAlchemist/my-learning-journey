@@ -1,0 +1,29 @@
+// 判断是否是字母或数字
+bool isAlNum(char c) {
+    return (c >= 'a' && c <= 'z') ||
+           (c >= 'A' && c <= 'Z') ||
+           (c >= '0' && c <= '9');
+}
+
+// 转小写
+char toLower(char c) {
+    if (c >= 'A' && c <= 'Z') return c + 32;
+    return c;
+}
+
+bool isPalindrome(char* s) {
+    int left = 0, right = strlen(s) - 1;
+    
+    while (left < right) {
+        // 跳过非字母数字
+        while (left < right && !isAlNum(s[left])) left++;
+        while (left < right && !isAlNum(s[right])) right--;
+        
+        // 比较（忽略大小写）
+        if (toLower(s[left]) != toLower(s[right])) return false;
+        
+        left++;
+        right--;
+    }
+    return true;
+}
